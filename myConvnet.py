@@ -68,11 +68,13 @@ print("max_pooling result1:",mp1.data.shape)
 dr1 = F.dropout(mp1)
 print("dropout result1:",dr1.data.shape)
 
-mlpconv4=L.MLPConvolution2D(384, (1024, 1024, 1000), 3, pad=1, wscale=w)
-
+mlpconv4=L.MLPConvolution2D(96, (1024, 1024, 1000), 3, pad=1, wscale=w)
 h = mlpconv4(dr1)
+print("mlpconv4 result:",h.data.shape)
+
 ap1 = F.average_pooling_2d(h, 6)
-h = F.reshape(ap1, 1, 1000)
+print("ap1 result:",ap1.data.shape)
+h = F.reshape(ap1, (1, 1000))
 
 #self.mlpconv4(h, train=self.train))
 
