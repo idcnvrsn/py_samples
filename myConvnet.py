@@ -39,7 +39,7 @@ w = math.sqrt(2)  # MSRA scaling
 conv1=L.MLPConvolution2D(3, (96, 96, 96), 11, stride=4, wscale=w)
 
 mlpconv1 = conv1(image)
-print("conv result1:",mlpconv1.shape)
+print("conv result1:",mlpconv1.data.shape)
 
 #rev_image = np.transpose(cv1.data,(1,2,3,0))
 
@@ -68,6 +68,11 @@ print("max_pooling result1:",mp1.data.shape)
 dr1 = F.dropout(mp1)
 print("dropout result1:",dr1.data.shape)
 
+mlpconv4=L.MLPConvolution2D(384, (1024, 1024, 1000), 3, pad=1, wscale=w)
+
+h = mlpconv4(dr1)
+ap1 = F.average_pooling_2d(h, 6)
+h = F.reshape(ap1, 1, 1000)
 
 #self.mlpconv4(h, train=self.train))
 
