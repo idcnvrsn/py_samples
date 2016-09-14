@@ -18,6 +18,15 @@ from scipy.misc import imresize
 #chelsea = data.chelsea()
 #plt.imshow(chelsea)
 
+def plot(images,count):
+    fig = plt.figure()
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+    for i in range(count):
+        ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
+    #    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
+        ax.imshow(images[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.show()
+
 image = datasets.load_sample_image("flower.jpg")
 image = imresize(image,(300,400))
 image = image.astype("float32") / 255.0
@@ -49,73 +58,29 @@ type(mlpconv1)
 
 print("conv result1 image shape:",mlpconv1.data[0].shape)
 print("mlpconv1 is")
-
-#n1, n2, h, w = model.conv1.W.shape
-fig = plt.figure()
-fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-for i in range(96):
-    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
-#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.imshow(mlpconv1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
-plt.show()
+plot(mlpconv1.data,mlpconv1.data.shape[1])
 
 relu1 = F.relu(mlpconv1)
 print("relu result1:",relu1.data.shape)
-
-fig = plt.figure()
-fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-for i in range(96):
-    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
-#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.imshow(relu1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
-plt.show()
+plot(relu1.data,relu1.data.shape[1])
 
 mp1 = F.max_pooling_2d(relu1, 3, stride=2)
 print("max_pooling result1:",mp1.data.shape)
-
-fig = plt.figure()
-fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-for i in range(96):
-    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
-#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.imshow(mp1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
-plt.show()
+plot(mp1.data,mp1.data.shape[1])
 
 dr1 = F.dropout(mp1)
 print("dropout result1:",dr1.data.shape)
-
-fig = plt.figure()
-fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-for i in range(96):
-    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
-#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.imshow(dr1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
-plt.show()
-
+plot(dr1.data,dr1.data.shape[1])
 
 mlpconv4=L.MLPConvolution2D(96, (1024, 1024, 1000), 3, pad=1, wscale=w)
-h = mlpconv4(dr1)
+h = mlpconv4(dr1.data)
 print("mlpconv4 result:",h.data.shape)
-
-fig = plt.figure()
-fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-for i in range(100):
-    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
-#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.imshow(h.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
-plt.show()
-
+plot(h.data,100)
 
 ap1 = F.average_pooling_2d(h, 6)
 print("ap1 result:",ap1.data.shape)
 
-fig = plt.figure()
-fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
-for i in range(100):
-    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
-#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.imshow(ap1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
-plt.show()
+plot(ap1.data,100)
 
 #h = F.reshape(ap1, (1, 1000))
 
