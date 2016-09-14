@@ -7,6 +7,7 @@ import chainer.functions as F
 import chainer.links as L
 import numpy as np
 import math
+import time
 
 from sklearn import datasets
 import matplotlib.pyplot as plt
@@ -46,9 +47,8 @@ print("conv result1:",mlpconv1.data.shape)
 #plt.imshow(rev_image[0])
 type(mlpconv1)
 
-print(mlpconv1.data[0].shape)
+print("conv result1 image shape:",mlpconv1.data[0].shape)
 print("mlpconv1 is")
-plt.imshow(mlpconv1.data[0][0])
 
 #n1, n2, h, w = model.conv1.W.shape
 fig = plt.figure()
@@ -62,19 +62,62 @@ plt.show()
 relu1 = F.relu(mlpconv1)
 print("relu result1:",relu1.data.shape)
 
+fig = plt.figure()
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+for i in range(96):
+    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
+#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
+    ax.imshow(relu1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
+plt.show()
+
 mp1 = F.max_pooling_2d(relu1, 3, stride=2)
 print("max_pooling result1:",mp1.data.shape)
 
+fig = plt.figure()
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+for i in range(96):
+    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
+#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
+    ax.imshow(mp1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
+plt.show()
+
 dr1 = F.dropout(mp1)
 print("dropout result1:",dr1.data.shape)
+
+fig = plt.figure()
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+for i in range(96):
+    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
+#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
+    ax.imshow(dr1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
+plt.show()
+
 
 mlpconv4=L.MLPConvolution2D(96, (1024, 1024, 1000), 3, pad=1, wscale=w)
 h = mlpconv4(dr1)
 print("mlpconv4 result:",h.data.shape)
 
+fig = plt.figure()
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+for i in range(100):
+    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
+#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
+    ax.imshow(h.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
+plt.show()
+
+
 ap1 = F.average_pooling_2d(h, 6)
 print("ap1 result:",ap1.data.shape)
-h = F.reshape(ap1, (1, 1000))
+
+fig = plt.figure()
+fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+for i in range(100):
+    ax = fig.add_subplot(10, 10, i + 1, xticks=[], yticks=[])
+#    ax.imshow(model.conv1.W[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
+    ax.imshow(ap1.data[0][i])#, cmap=plt.cm.gray_r, interpolation='nearest')
+plt.show()
+
+#h = F.reshape(ap1, (1, 1000))
 
 #self.mlpconv4(h, train=self.train))
 
