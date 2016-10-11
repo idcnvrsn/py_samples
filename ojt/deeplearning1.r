@@ -1,7 +1,11 @@
-#install.packages("drat", repos="https://cran.rstudio.com")
-#drat:::addRepo("dmlc")
-#install.packages("mxnet")
-library(mxnet)
+if(0)
+{
+	install.packages("drat", repos="https://cran.rstudio.com")
+	drat:::addRepo("dmlc")
+	install.packages("mxnet")
+	install.packages("glmnet")
+	install.packages("e1071")
+}
 
 # 男子
 dm<-read.csv('https://github.com/ozt-ca/tjo.hatenablog.samples/raw/master/r_samples/public_lib/jp/exp_uci_datasets/tennis/men.txt',header=T,sep='\t')
@@ -85,3 +89,18 @@ preds <- predict(model, test.x, array.layout = "rowmajor")
 pred.label <- max.col(t(preds)) - 1
 table(test.y, pred.label)
 sum(diag(table(test.y, pred.label)))/nrow(test)
+
+# L1正則化ロジスティック回帰
+library(glmnet)
+dm.l1 <- cv.glmnet(as.matrix(dm[,-1]), as.matrix(dm[,1]), family='binomial', alpha=1)
+table(dw$Result, round(predict(dm.l1, newx=as.matrix(dw[,-1]), type='response', s=dm.l1$lambda.min),0))
+   
+sum(diag(table(dw$Result, round(predict(dm.l1, newx=as.matrix(dw[,-1]), type='response', s=dm.l1$lambda.min),0))))/nrow(dw)
+
+# 線形SVM
+library(e1071)
+dm.svm.l <- svm(as.factor(Result)~., dm, kernel='linear')
+table(dw$Result, predict(dm.svm.l, newdata=dw[,-1]))
+   
+sum(diag(table(dw$Result, predict(dm.svm.l, newdata=dw[,-1]))))/nrow(dw)
+
