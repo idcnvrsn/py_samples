@@ -72,7 +72,7 @@ dr1 = F.dropout(mp1)
 print("dropout result1:",dr1.data.shape)
 plot(dr1.data,dr1.data.shape[1])
 
-mlpconv4=L.MLPConvolution2D(96, (1024, 1024, 1000), 3, pad=1, wscale=w)
+mlpconv4=L.MLPConvolution2D(96, (1024, 1024, 100), 3, pad=1, wscale=w)
 h = mlpconv4(dr1.data)
 print("mlpconv4 result:",h.data.shape)
 plot(h.data,100)
