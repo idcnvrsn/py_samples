@@ -170,3 +170,13 @@ pred.label <- max.col(t(preds)) - 1
 table(label_grid, pred.label)
 
 sum(diag(table(label_grid, pred.label)))/nrow(pgrid)
+
+plot(c(), type='n', xlim=c(-4,4), ylim=c(-4,4), xlab='', ylab='')
+par(new=T)
+polygon(c(-4,4,4),c(4,-4,4),col='#dddddd')
+par(new=T)
+polygon(c(-4,-4,4),c(4,-4,-4),col='#ffdddd')
+par(new=T)
+plot(dbi[,-3], pch=19, cex=0.5, col=dbi$label+1, xlim=c(-4,4), ylim=c(-4,4), xlab='', ylab='')
+par(new=T)
+contour(px, py, array(pred.label, dim=c(length(px),length(py))), col='purple', lwd=5, levels =0.5, drawlabels=F, xlim=c(-4,4), ylim=c(-4,4))
