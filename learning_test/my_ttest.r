@@ -11,3 +11,5 @@ var.test(x$A,x$C)
 
 t.test(x$A,x$C,var.equal=T)   # “™•ªŽU
 t.test(x$A,x$C,var.equal=F)   # •s“™•ªŽU
+
+wilcox.test(x$A,x$C)
