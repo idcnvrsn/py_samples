@@ -4,6 +4,7 @@ Created on Wed Oct 26 13:15:45 2016
 """
 
 import cv2
+import matplotlib.pyplot as plt
 
 # Load two images
 img1 = cv2.imread('messi5.png')
