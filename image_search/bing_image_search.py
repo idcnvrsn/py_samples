@@ -114,7 +114,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--query',
         type=str,
-        default='服　ハンガー',
+        default='',
         help='search query.'
   )
 
