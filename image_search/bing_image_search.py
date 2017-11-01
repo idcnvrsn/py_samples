@@ -4,7 +4,13 @@ Created on Mon Oct 23 13:01:32 2017
 
 """
 
-import argparse, requests, urllib.parse, os, io, imghdr
+import argparse
+import requests
+import urllib.parse
+import os
+import io
+from datetime import datetime
+import sys
 
 # 基本的なモデルパラメータ
 FLAGS = None
@@ -50,8 +56,9 @@ def GetImageUrls():
 
     return image_list
 
+
 # 画像を取得してローカルへ保存
-def fetch_images(image_list):
+def fetch_images(image_list, output_path):
     print('total images:%d' % len(image_list))
     for i in range(len(image_list)):
 
@@ -79,10 +86,11 @@ def fetch_images(image_list):
         # 画像をローカル保存
             try:
 #                with open('{}/{}_bsa.{}'.format(FLAGS.output_path, str(i), os.path.basename(image_list[i]),imghdr.what(fh)), 'wb') as f:
-                with open("cardboard_box" + os.sep + os.path.basename(image_list[i]), 'wb') as f:
+                with open(output_path + os.sep + os.path.basename(image_list[i]), 'wb') as f:
                     f.write(response.content)
             except:
                 pass
+
 
 # 直接実行されている場合に通る(importされて実行時は通らない)
 if __name__ == '__main__':
@@ -105,12 +113,14 @@ if __name__ == '__main__':
         default=0,
         help='offset start.'
   )
+    """
     parser.add_argument(
         '--output_path',
         type=str,
         default='./images',
         help='image files output directry.'
   )
+    """
     parser.add_argument(
         '--query',
         type=str,
@@ -120,4 +130,18 @@ if __name__ == '__main__':
 
     # パラメータ取得と実行
     FLAGS, unparsed = parser.parse_known_args()
-    fetch_images(GetImageUrls())
+    
+    if FLAGS.query == "":
+        print("query is None.Exit.")
+        sys.exit()
+
+    output_path = FLAGS.query
+        
+    try:
+        os.mkdir(output_path)
+    except:
+        print("The folder \"" + output_path + "\" can be created.Add datetime.")
+        output_path = output_path + "_" + datetime.now().strftime("%Y%m%d_%H%M%S")
+        os.mkdir(output_path)
+
+    fetch_images(GetImageUrls(),output_path)
