@@ -42,4 +42,18 @@
 		],
 		"description": "datetime.now().strftime('%Y%m%d_%H%M%S')"
 	},
+	"glob": {
+		"prefix": "glob(dir_name+os.sep+'*')",
+		"body": [
+			"glob(dir_name+os.sep+'*')",
+		],
+		"description": "glob"
+	},
+	"glob recursive": {
+		"prefix": "glob(dir_name+os.sep+'*', recursive=True)",
+		"body": [
+			"glob(dir_name+os.sep+'*', recursive=True)",
+		],
+		"description": "glob recursive"
+	},
 }
