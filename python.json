@@ -56,4 +56,235 @@
 		],
 		"description": "glob recursive"
 	},
+	"lgb": {
+        "prefix": [
+            "lgb",
+            "import lightgbm as lgb"
+        ],
+        "body": "import lightgbm as lgb",
+        "description": "Import LightGBM"
+    },
+    "np": {
+        "prefix": [
+            "np",
+            "import numpy as np"
+        ],
+        "body": "import numpy as np",
+        "description": "Import Numpy"
+    },
+    "pd": {
+        "prefix": [
+            "pd",
+            "import pandas as pd"
+        ],
+        "body": "import pandas as pd",
+        "description": "Import Pandas"
+    },
+    "plt": {
+        "prefix": [
+            "plt",
+            "import matplotlib.pyplot as plt",
+            "from matplotlib import ..."
+        ],
+        "body": "from matplotlib import pyplot as plt",
+        "description": "Import Matplotlib"
+    },
+    "sns": {
+        "prefix": [
+            "sns",
+            "import seaborn as sns"
+        ],
+        "body": "import seaborn as sns",
+        "description": "Import seaborn"
+    },
+    "joblib.dump": {
+        "prefix": [
+            "joblib.dump",
+            "from joblib import dump"
+        ],
+        "body": "from joblib import dump",
+        "description": "Import `dump` in Joblib"
+    },
+    "joblib.load": {
+        "prefix": [
+            "joblib.load",
+            "from joblib import load"
+        ],
+        "body": "from joblib import load",
+        "description": "Import `load` in Joblib"
+    },
+    "sklearn.compose.make_column_transformer": {
+        "prefix": [
+            "sklearn.compose.make_column_transformer",
+            "from sklearn.compose import ..."
+        ],
+        "body": "from sklearn.compose import make_column_transformer",
+        "description": "Import `make_column_transformer` in scikit-learn"
+    },
+    "sklearn.datasets.load_*": {
+        "prefix": [
+            "sklearn.datasets.load_*",
+            "from sklearn.datasets import ..."
+        ],
+        "body": "from sklearn.datasets import ${1:load_iris}",
+        "description": "Import a function that loads a dataset"
+    },
+    "sklearn.pipeline.make_pipeline": {
+        "prefix": [
+            "sklearn.pipeline.make_pipeline",
+            "from sklearn.pipeline import ..."
+        ],
+        "body": "from sklearn.pipeline import make_pipeline",
+        "description": "Import `make_pipeline` in scikit-learn"
+    },
+    "logger = ...": {
+        "prefix": "logger = ...",
+        "body": "logger = logging.getLogger(${1:__name__})",
+        "description": "Get a logger"
+    },
+    "dtrain = ...": {
+        "prefix": "dtrain = ...",
+        "body": "dtrain = lgb.Dataset(${1:X}, label=${2:y})",
+        "description": "Create a LightGBM dataset instance"
+    },
+    "booster = ...": {
+        "prefix": "booster = ...",
+        "body": [
+            "booster = lgb.train(",
+            "\t${1:params},",
+            "\t${2:dtrain},",
+            "\t${3:# **kwargs}",
+            ")"
+        ],
+        "description": "Train a LightGBM booster"
+    },
+    "ax = ...": {
+        "prefix": "ax = ...",
+        "body": [
+            "ax = lgb.plot_importance(",
+            "\t${1:booster},",
+            "\t${2:# **kwargs}",
+            ")"
+        ],
+        "description": "Plot feature importances"
+    },
+    "f, ax = ...": {
+        "prefix": "f, ax = ...",
+        "body": "f, ax = plt.subplots(figsize=${1:(8, 6)})",
+        "description": "Create a figure and a set of subplots"
+    },
+    "df = ...": {
+        "prefix": "df = ...",
+        "body": [
+            "df = pd.read_csv(",
+            "\t${1:filepath_or_buffer},",
+            "\t${2:# **kwargs}",
+            ")"
+        ],
+        "description": "Read a csv file into a Pandas dataFrame"
+    },
+    "description = ...": {
+        "prefix": "description = ...",
+        "body": "description = ${1:df}.describe(include=${2:\"all\"})",
+        "description": "Create a Pandas dataframe description"
+    },
+    "with pd.option_context(...": {
+        "prefix": "with pd.option_context(...",
+        "body": [
+            "with.pd.option_context(",
+            "\t\"display.max_rows\",",
+            "\t${1:None},",
+            "\t\"display.max_columns\",",
+            "\t${2:None},",
+            "):",
+            "\tdisplay(${3:pass})"
+        ],
+        "description": "Set temporarily Pandas options"
+    },
+    "X, y = ...": {
+        "prefix": "X, y = ...",
+        "body": "X, y = ${1:load_iris}(return_X_y=True)",
+        "description": "Load and return the dataset"
+    },
+    "X_train, X_test, ...": {
+        "prefix": "X_train, X_test, ...",
+        "body": [
+            "X_train, X_test, y_train, y_test = train_test_split(",
+            "\tX,",
+            "\ty,",
+            "\trandom_state=${1:0},",
+            "\tshuffle=${2:True},",
+            ")"
+        ],
+        "description": "Split arrays into train and test subsets"
+    },
+    "estimator = BaseEstimator(...": {
+        "prefix": "estimator = BaseEstimator(...",
+        "body": [
+            "estimator = ${1:BaseEstimator}(",
+            "\t${2:# **params}",
+            ")"
+        ],
+        "description": "Create an scikit-learn estimator instance"
+    },
+    "estimator = make_pipeline(...": {
+        "prefix": "estimator = make_pipeline(...",
+        "body": [
+            "estimator = make_pipeline(",
+            "\t${1:estimator},",
+            "\t${2:# *steps}",
+            ")"
+        ],
+        "description": "Create a scikit-learn pipeline instance"
+    },
+    "estimator = make_column_transformer(...": {
+        "prefix": "estimator = make_column_transformer(...",
+        "body": [
+            "estimator = make_column_transformer(",
+            "\t(${1:estimator}, ${2:columns}),",
+            "\t${3:# *transformers}",
+            ")"
+        ],
+        "description": "Create a scikit-learn column transformer instance"
+    },
+    "estimator.fit(...": {
+        "prefix": "estimator.fit(...",
+        "body": [
+            "${1:estimator}.fit(",
+            "\t${2:X},",
+            "\ty=${3:y},",
+            "\t${4:# **fit_params}",
+            ")"
+        ],
+        "description": "Fit the estimator according to the given training data"
+    },
+    "dump(...": {
+        "prefix": "dump(...",
+        "body": "dump(${1:estimator}, ${2:filename}, compress=${3:0})",
+        "description": "Save the estimator"
+    },
+    "estimator = load(...": {
+        "prefix": "estimator = load(...",
+        "body": "estimator = load(${1:filename})",
+        "description": "Load the estimator"
+    },
+    "y_pred = ...": {
+        "prefix": "y_pred = ...",
+        "body": "y_pred = ${1:estimator}.predict(${2:X})",
+        "description": "Predict using the fitted model"
+    },
+    "X = ...": {
+        "prefix": "X = ...",
+        "body": "X = ${1:estimator}.transform(${2:X})",
+        "description": "Transform the data"
+	},
+	"class": {
+		"prefix": "class",
+		"body": [
+            "class MyClass:",
+			"    def __init__(self):",
+			"        self.name = ''",
+		],
+		"description": "class"
+	},
 }
