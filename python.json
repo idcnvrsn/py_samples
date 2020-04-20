@@ -300,4 +300,11 @@
 		],
 		"description": "argparse"
 	},
+	"OrderedDict": {
+		"prefix": "from collections import OrderedDict",
+		"body": [
+			"from collections import OrderedDict",
+		],
+		"description": "OrderedDict"
+	},
 }
