@@ -306,5 +306,20 @@
 			"from collections import OrderedDict",
 		],
 		"description": "OrderedDict"
-	},
+    },
+	"enumerate_tqdm": {
+		"prefix": "enumerate_tqdm",
+		"body": [
+			"for index, _ in enumerate(tqdm(_s)):",
+            "    print(index, _)",
+		],
+		"description": "enumerate_tqdm"
+    },
+	"from tqdm import tqdm": {
+		"prefix": "from tqdm import tqdm",
+		"body": [
+			"from tqdm import tqdm",
+		],
+		"description": "from tqdm import tqdm"
+    },
 }
