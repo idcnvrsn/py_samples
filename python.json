@@ -329,7 +329,15 @@
 		],
 		"description": "from tqdm import tqdm"
     },
-	"enumerate_zip": {
+	"enumerate": {
+		"prefix": "enumerate",
+		"body": [
+            "for index, _ in enumerate(_s):",
+            "    print(index, _)",
+		],
+		"description": "enumerate"
+    },
+    "enumerate_zip": {
 		"prefix": "enumerate_zip",
 		"body": [
             "for index, (_1, _2) in enumerate(zip(_1s, _2s)):",
