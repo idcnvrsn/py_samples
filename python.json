@@ -41,13 +41,20 @@
 			"datetime.now().strftime('%Y%m%d_%H%M%S')",
 		],
 		"description": "datetime.now().strftime('%Y%m%d_%H%M%S')"
+    },
+	"from glob import glob": {
+		"prefix": "from glob import glob",
+		"body": [
+			"from glob import glob",
+		],
+		"description": "from glob import glob"
 	},
-	"glob": {
+	"glob_dir": {
 		"prefix": "glob(dir_name+os.sep+'*')",
 		"body": [
 			"glob(dir_name+os.sep+'*')",
 		],
-		"description": "glob"
+		"description": "glob_dir"
 	},
 	"glob recursive": {
 		"prefix": "glob(dir_name+os.sep+'*', recursive=True)",
@@ -306,5 +313,54 @@
 			"from collections import OrderedDict",
 		],
 		"description": "OrderedDict"
-	},
+    },
+	"enumerate_tqdm": {
+		"prefix": "enumerate_tqdm",
+		"body": [
+			"for index, _ in enumerate(tqdm(_s)):",
+            "    print(index, _)",
+		],
+		"description": "enumerate_tqdm"
+    },
+	"from tqdm import tqdm": {
+		"prefix": "from tqdm import tqdm",
+		"body": [
+			"from tqdm import tqdm",
+		],
+		"description": "from tqdm import tqdm"
+    },
+	"enumerate": {
+		"prefix": "enumerate",
+		"body": [
+            "for index, _ in enumerate(_s):",
+            "    print(index, _)",
+		],
+		"description": "enumerate"
+    },
+    "enumerate_zip": {
+		"prefix": "enumerate_zip",
+		"body": [
+            "for index, (_1, _2) in enumerate(zip(_1s, _2s)):",
+            "    print(index, _1, _2)",
+		],
+		"description": "enumerate_zip"
+    },
+	"tqdm_zip": {
+		"prefix": "tqdm_zip",
+		"body": [
+            "for (_1, _2) in tqdm(zip(_1s, _2s)):",
+            "    print(_1, _2)"
+		],
+		"description": "tqdm_zip"
+    },
+	"enumerate_tqdm_zip": {
+		"prefix": "enumerate_tqdm_zip",
+		"body": [
+            "for index, (_1, _2) in enumerate(tqdm(zip(_1s, _2s))):",
+            "    print(index, _1, _2)",
+		],
+		"description": "enumerate_tqdm_zip"
+    },
+
+
 }
