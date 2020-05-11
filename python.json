@@ -63,6 +63,13 @@
 		],
 		"description": "glob recursive"
 	},
+	"sorted glob_dir": {
+		"prefix": "sorted(glob(dir_name+os.sep+'*'))",
+		"body": [
+			"sorted(glob(dir_name+os.sep+'*'))",
+		],
+		"description": "sorted glob_dir"
+	},
 	"lgb": {
         "prefix": [
             "lgb",
@@ -361,6 +368,24 @@
 		],
 		"description": "enumerate_tqdm_zip"
     },
+	"json load": {
+		"prefix": "json load",
+		"body": [
+            "with open('json.json') as f:",
+            "   _ = json.load(f)"
+        ],
+		"description": "json load"
+	},
+	"pathlib mkdir": {
+		"prefix": "pathlib mkdir",
+		"body": [
+            "output_dir=Path('_')",
+            "if output_dir.exists():",
+            "    shutil.rmtree(output_dir.name)",
+            "output_dir.mkdir(parents=True, exist_ok=True)"
+        ],
+		"description": "pathlib mkdir"
+	},
 
 
 }
