@@ -375,6 +375,14 @@
             "   _ = json.load(f)"
         ],
 		"description": "json load"
+    },
+	"json dump": {
+		"prefix": "json dump",
+		"body": [
+            "with open('_.json', 'w') as f:",
+            "   json.dump(d, f, indent=4)"
+        ],
+		"description": "json dump"
 	},
 	"pathlib mkdir": {
 		"prefix": "pathlib mkdir",
@@ -385,7 +393,21 @@
             "output_dir.mkdir(parents=True, exist_ok=True)"
         ],
 		"description": "pathlib mkdir"
+    },
+	"pickle load": {
+		"prefix": "pickle load",
+		"body": [
+        "with open('_.pkl', 'rb') as f:",
+        "    _ = pickle.load(f)"
+        ],
+		"description": "pickle load"
+    },
+    "elappsed time": {
+		"prefix": "elappsed time",
+		"body": [
+            "start_time = time()",
+            "elapsed_time = time() - start_time",
+            "print (\"elapsed_time:{0}\".format(elapsed_time) + \"[sec]\")"       ],
+		"description": "elappsed time"
 	},
-
-
 }
