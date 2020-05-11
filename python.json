@@ -409,5 +409,12 @@
             "elapsed_time = time() - start_time",
             "print (\"elapsed_time:{0}\".format(elapsed_time) + \"[sec]\")"       ],
 		"description": "elappsed time"
-	},
+    },
+    "np where": {
+		"prefix": "np where",
+		"body": [
+            "list(zip(*np.where(a < 4)))"
+        ],
+		"description": "np where 2dim"
+    },
 }
