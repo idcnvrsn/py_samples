@@ -304,7 +304,7 @@
 	"argparse": {
 		"prefix": "argparse",
 		"body": [
-            "parser = argparse.ArgumentParser(description='このプログラムの説明', fromfile_prefix_chars='@')",
+            "parser = argparse.ArgumentParser(description='このプログラムの説明', formatter_class=argparse.ArgumentDefaultsHelpFormatter, fromfile_prefix_chars='@')",
 			"parser.add_argument('filename', help='ファイル名')",
 			"parser.add_argument('input_dir', help='入力ディレクトリ')",
 			"parser.add_argument('--arg3')",
