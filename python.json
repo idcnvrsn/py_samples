@@ -63,6 +63,13 @@
 		],
 		"description": "glob recursive"
 	},
+	"sorted glob_dir": {
+		"prefix": "sorted(glob(dir_name+os.sep+'*'))",
+		"body": [
+			"sorted(glob(dir_name+os.sep+'*'))",
+		],
+		"description": "sorted glob_dir"
+	},
 	"lgb": {
         "prefix": [
             "lgb",
@@ -297,7 +304,7 @@
 	"argparse": {
 		"prefix": "argparse",
 		"body": [
-            "parser = argparse.ArgumentParser(description='このプログラムの説明', fromfile_prefix_chars='@')",
+            "parser = argparse.ArgumentParser(description='このプログラムの説明', formatter_class=argparse.ArgumentDefaultsHelpFormatter, fromfile_prefix_chars='@')",
 			"parser.add_argument('filename', help='ファイル名')",
 			"parser.add_argument('input_dir', help='入力ディレクトリ')",
 			"parser.add_argument('--arg3')",
@@ -361,6 +368,53 @@
 		],
 		"description": "enumerate_tqdm_zip"
     },
-
-
+	"json load": {
+		"prefix": "json load",
+		"body": [
+            "with open('json.json') as f:",
+            "   _ = json.load(f)"
+        ],
+		"description": "json load"
+    },
+	"json dump": {
+		"prefix": "json dump",
+		"body": [
+            "with open('_.json', 'w') as f:",
+            "   json.dump(d, f, indent=4)"
+        ],
+		"description": "json dump"
+	},
+	"pathlib mkdir": {
+		"prefix": "pathlib mkdir",
+		"body": [
+            "output_dir=Path('_')",
+            "if output_dir.exists():",
+            "    shutil.rmtree(output_dir.name)",
+            "output_dir.mkdir(parents=True, exist_ok=True)"
+        ],
+		"description": "pathlib mkdir"
+    },
+	"pickle load": {
+		"prefix": "pickle load",
+		"body": [
+        "with open('_.pkl', 'rb') as f:",
+        "    _ = pickle.load(f)"
+        ],
+		"description": "pickle load"
+    },
+    "elappsed time": {
+		"prefix": "elappsed time",
+		"body": [
+            "start_time = time()",
+            "elapsed_time = time() - start_time",
+            "print (\"elapsed_time:{0}\".format(elapsed_time) + \"[sec]\")"       ],
+		"description": "elappsed time"
+    },
+    "np where": {
+		"prefix": "np where",
+		"body": [
+            "list(zip(*np.where(a < 4)))"
+        ],
+		"description": "np where 2dim"
+    },
 }
