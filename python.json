@@ -220,6 +220,11 @@
         "body": "X, y = ${1:load_iris}(return_X_y=True)",
         "description": "Load and return the dataset"
     },
+    "from sklearn.model_selection import train_test_split": {
+        "prefix": "from sklearn.model_selection import train_test_split",
+        "body": "from sklearn.model_selection import train_test_split",
+        "description": "from sklearn.model_selection import train_test_split"
+    },
     "X_train, X_test, ...": {
         "prefix": "X_train, X_test, ...",
         "body": [
@@ -320,6 +325,14 @@
 			"from collections import OrderedDict",
 		],
 		"description": "OrderedDict"
+    },
+	"tqdm": {
+		"prefix": "tqdm",
+		"body": [
+			"for index, _ in tqdm(_s):",
+            "    print(_)",
+		],
+		"description": "tqdm"
     },
 	"enumerate_tqdm": {
 		"prefix": "enumerate_tqdm",
