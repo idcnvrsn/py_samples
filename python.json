@@ -311,7 +311,8 @@
 		"body": [
             "parser = argparse.ArgumentParser(description='このプログラムの説明', formatter_class=argparse.ArgumentDefaultsHelpFormatter, fromfile_prefix_chars='@')",
 			"parser.add_argument('filename', default=\"\", help='ファイル名')",
-			"parser.add_argument('input_dir', default=\".\", help='入力ディレクトリ')",
+            "parser.add_argument('input_dir', default=\".\", help='入力ディレクトリ')",
+			"parser.add_argument('--seed', type=int,default=4321, help='random seed')",
 			"parser.add_argument('--arg3')",
 			"parser.add_argument('-a', '--arg4')",
 			"args = parser.parse_args()",
@@ -430,4 +431,43 @@
         ],
 		"description": "np where 2dim"
     },
+    "random sample": {
+		"prefix": "random sample",
+		"body": [
+            "__ = random.sample(_, len(_))"
+        ],
+		"description": "random sample"
+    },
+    "pathlib mkdir 2dir": {
+		"prefix": "pathlib mkdir 2dir",
+		"body": [
+            "output_root_dir=\"the_root_dir\"",
+            "output__dir=Path(output_root_dir) / \"the_dir_1\"",
+            "output___dir=Path(output_root_dir) / \"the_dir_2\"",
+            "",
+            "if output__dir.exists():",
+            "    shutil.rmtree(str(output__dir))",
+            "output__dir.mkdir(parents=True, exist_ok=True)",
+            "",
+            "if output___dir.exists():",
+            "    shutil.rmtree(str(output___dir))",
+            "output___dir.mkdir(parents=True, exist_ok=True)"
+        ],
+    "description": "pathlib mkdir 2dir"
+    },
+    "pathlib mkdir 2dir 2": {
+		"prefix": "pathlib mkdir 2dir 2",
+		"body": [
+            "output_root_dir=Path(\"output_root_dir\")",
+            "if output_root_dir.exists():",
+            "    shutil.rmtree(output_root_dir)",
+            "",
+            "output_dir1=output_root_dir / \"_dir1\"",
+            "output_dir2=output_root_dir / \"_dir2\"",
+            "",
+            "output_dir1.mkdir(parents=True, exist_ok=True)",   
+            "output_dir2.mkdir(parents=True, exist_ok=True)"
+        ],
+        "description": "pathlib mkdir 2dir 2"
+        },
 }
