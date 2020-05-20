@@ -310,8 +310,8 @@
 		"prefix": "argparse",
 		"body": [
             "parser = argparse.ArgumentParser(description='このプログラムの説明', formatter_class=argparse.ArgumentDefaultsHelpFormatter, fromfile_prefix_chars='@')",
-			"parser.add_argument('filename', default=\"\", help='ファイル名')",
-            "parser.add_argument('input_dir', default=\".\", help='入力ディレクトリ')",
+			"parser.add_argument('--filename', default=\"\", help='ファイル名.必ず指定する引数にする場合--filename→filenameとする.')",
+            "parser.add_argument('--input_dir', default=\".\", help='入力ディレクトリ.必ず指定する引数にする場合--input_dir→input_dirとする.')",
 			"parser.add_argument('--seed', type=int,default=4321, help='random seed')",
 			"parser.add_argument('-a', '--arg4', type=float)",
 			"parser.add_argument('--arg_if_set_true', action='store_true', help='セットすると変数にTrueがセットされる')",
