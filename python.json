@@ -332,7 +332,7 @@
 	"tqdm": {
 		"prefix": "tqdm",
 		"body": [
-			"for index, _ in tqdm(_s):",
+			"for _ in tqdm(_s):",
             "    print(_)",
 		],
 		"description": "tqdm"
