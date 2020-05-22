@@ -57,9 +57,9 @@
 		"description": "glob_dir"
 	},
 	"glob recursive": {
-		"prefix": "sorted glob(dir_name+os.sep+'*', recursive=True)",
+		"prefix": "sorted glob(dir_name+os.sep+'*/*', recursive=True)",
 		"body": [
-			"glob(dir_name+os.sep+'*', recursive=True)",
+			"sorted(glob(dir_name+os.sep+'*/*', recursive=True))",
 		],
 		"description": "glob recursive"
 	},
