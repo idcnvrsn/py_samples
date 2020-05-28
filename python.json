@@ -472,4 +472,12 @@
         ],
         "description": "pathlib mkdir 2dir 2"
         },
+        "0 fill str format": {
+            "prefix": "0 fill str format",
+            "body": [
+            "num=3",
+            "str_value='{:03}'.format(num)",
+        ],
+        "description": "0 fill str format"
+        },
 }
