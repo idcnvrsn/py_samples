@@ -22,6 +22,8 @@ if __name__ == '__main__':
         print(new_string)
 
         for line in  lines:
+            line=line.replace(r'"',r'\"')
+#            line=line.replace(r"'",r"\'")
             new_string="          \""+line+"\","
             print(new_string)
 
