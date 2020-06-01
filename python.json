@@ -480,4 +480,16 @@
         ],
         "description": "0 fill str format"
         },
+        "read line": {
+            "prefix":"read line",
+            "body": [
+                 "with open(args.filepath, 'r') as f",
+                 "    lines = f.readlines()",
+                 "    lines=lines.splitlines()",
+                 "",
+                 "    for line in lines:",
+                 "        print(line)",
+            ],
+            "description":"read line from file",
+        },
 }
