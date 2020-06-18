@@ -618,4 +618,10 @@
         ],
         "description":"Logger Class",
    },
+   "from pathlib import Path": {
+    "prefix": "from pathlib import Path",
+    "body": [
+        "from pathlib import Path",
+    ],
+    "description": "from pathlib import Path"
 }
