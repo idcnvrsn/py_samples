@@ -27,13 +27,13 @@
 		],
 		"description": "import numpy as np"
 	},
-	"with open(filepath, 'rb') as f": {
-		"prefix": "with open(filepath, 'rb') as f",
+	"with open(filepath, 'rb') as f:": {
+		"prefix": "with open(filepath, 'rb') as f:",
 		"body": [
-			"with open(filepath, 'rb') as f",
+			"with open(filepath, 'rb') as f:",
 			"    f",
 		],
-		"description": "with open(filepath, 'rb') as f"
+		"description": "with open(filepath, 'rb') as f:"
 	},
 	"datetime.now().strftime('%Y%m%d_%H%M%S')": {
 		"prefix": "datetime.now().strftime('%Y%m%d_%H%M%S')",
@@ -494,7 +494,7 @@
     "read line": {
         "prefix":"read line",
         "body": [
-                "with open(args.filepath, 'r') as f",
+                "with open(args.filepath, 'r') as f:",
                 "    lines = f.readlines()",
                 "    lines=lines.splitlines()",
                 "",
