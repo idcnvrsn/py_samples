@@ -208,6 +208,17 @@
         ],
         "description": "Read a csv file into a Pandas dataFrame"
     },
+    "df = pd.read_csv(fn, encoding=\"shift-jis\")": {
+        "prefix": "pd.read_csv(fn, encoding=",
+        "body": [
+            "df = pd.read_csv(",
+            "\t${1:filepath_or_buffer},",
+            "\t${2:# **kwargs}",
+            "\tencoding=\"shift-jis\"",
+            ")"
+        ],
+        "description": "Read a csv file into a Pandas dataFrame"
+    },
     "description = ...": {
         "prefix": "description = ...",
         "body": "description = ${1:df}.describe(include=${2:\"all\"})",
