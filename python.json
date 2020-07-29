@@ -20,7 +20,18 @@
 		],
 		"description": "main"
 	},
-	"import numpy as np": {
+    "main_main": {
+		"prefix": "main_main",
+		"body": [
+            "def main():",
+			"    ${1:pass}",
+            "",
+			"if __name__ == '__main__':",
+			"    main()"
+		],
+		"description": "main"
+	},
+    "import numpy as np": {
 		"prefix": "import numpy as np",
 		"body": [
 			"import numpy as np",
