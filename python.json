@@ -534,7 +534,10 @@
              "    _output_image=np.zeros_like(_bin_image)",
              "    for contour in contours:",
              "        area=cv2.contourArea(contour)",
-             "        _output_image=cv2.drawContours(_output_image, contour, -1, 255, -1)",
+             "        _output_image=cv2.drawContours(_output_image, [contour], 0, 255, -1)",
+             "",
+             "    _output_image=cv2.drawContours(_output_image, contours, -1, 255, -1)",
+
         ],
         "description":"snippet description",
    },
