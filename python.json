@@ -668,7 +668,7 @@
         "body": [
              "from math import modf",
              "from joblib import Parallel, delayed",
-             "r = Parallel(n_jobs=1)(delayed(modf)(i/2.) for i in range(10))",
+             "r = Parallel(n_jobs=-2)(delayed(modf)(i/2.) for i in range(10))",
              "res, i = zip(*r)",
              "res",
         ],
