@@ -540,7 +540,7 @@
 
         ],
         "description":"snippet description",
-   },
+    },
     "Logger Class": {
     "prefix":"Logger Class",
     "body": [
@@ -655,7 +655,7 @@
             "            raise err",
         ],
         "description":"Logger Class",
-   },
+    },
     "from pathlib import Path": {
     "prefix": "from pathlib import Path",
     "body": [
