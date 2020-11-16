@@ -673,5 +673,20 @@
              "res",
         ],
         "description":"snippet description",
-   },
+	},
+    "import pdb;pdb.set_trace()": {
+        "prefix": "import pdb;pdb.set_trace()",
+        "body": [
+            "import pdb;pdb.set_trace()",
+        ],
+        "description": "import pdb;pdb.set_trace()"
+    },
+    "train val test": {
+        "prefix": "train val test",
+        "body": [
+            "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1, shuffle=True)",
+            "X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=1, shuffle=True)",
+        ],
+        "description": "train val test"
+    }
 }
