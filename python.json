@@ -688,5 +688,13 @@
             "X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=1, shuffle=True)",
         ],
         "description": "train val test"
-    }
+    },
+	"from pprint import pprint": {
+		"prefix": "from pprint import pprint",
+		"body": [
+			"from pprint import pprint",
+		],
+		"description": "from pprint import pprint"
+	},
+
 }
