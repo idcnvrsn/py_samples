@@ -528,15 +528,15 @@
     "contour_bin": {
         "prefix":"contour_bin",
         "body": [
-             "    __bin_image = _bin_image.copy()",
-             "    contours, __ = cv2.findContours(__bin_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)",
+             "    bin_image_copy = bin_image.copy()",
+             "    contours, hierarchy = cv2.findContours(bin_image_copy, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)",
              "",
-             "    _output_image=np.zeros_like(_bin_image)",
+             "    output_image=np.zeros_like(bin_image_copy)",
              "    for contour in contours:",
              "        area=cv2.contourArea(contour)",
-             "        _output_image=cv2.drawContours(_output_image, [contour], 0, 255, -1)",
+             "        output_image=cv2.drawContours(output_image, [contour], 0, 255, -1)",
              "",
-             "    _output_image=cv2.drawContours(_output_image, contours, -1, 255, -1)",
+             "    output_image=cv2.drawContours(output_image, contours, -1, 255, -1)",
 
         ],
         "description":"snippet description",
