@@ -666,14 +666,33 @@
     "joblib paralell": {
         "prefix":"joblib paralell",
         "body": [
-             "from math import modf",
-             "from joblib import Parallel, delayed",
-             "r = Parallel(n_jobs=-2)(delayed(modf)(i/2.) for i in range(10))",
-             "res, i = zip(*r)",
-             "res",
+            "from math import modf",
+            "from joblib import Parallel, delayed",
+            "",
+            "def func(a):",
+            "   return modf(a)",
+            "",
+            "results = Parallel(n_jobs=-2, verbose=10)(delayed(func)(i/2.) for i in range(10))",
+            "decimals, integers = zip(*results)"
         ],
         "description":"snippet description",
 	},
+    "joblib parallel 2 args": {
+        "prefix":"joblib parallel 2 args",
+        "body": [
+             "from joblib import Parallel, delayed",
+             "",
+             "def func(a, b):",
+             "    return a * b",
+             "",
+             "a_list=list(range(10))",
+             "b_list=list(range(10))",
+             "",
+             "results = Parallel(n_jobs=-1, verbose=10)([delayed(func)(a, b) for a, b in zip(a_list, b_list)])",
+             "results",
+        ],
+        "description":"snippet description",
+    },
     "import pdb;pdb.set_trace()": {
         "prefix": "import pdb;pdb.set_trace()",
         "body": [
