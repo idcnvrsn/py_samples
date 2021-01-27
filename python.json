@@ -730,4 +730,16 @@
 		],
 		"description": "thresold"
     },
+	"replace_ext": {
+		"prefix": "replace_ext",
+		"body": [
+            "def replace_ext(filename, ext):",
+            "   '''",
+            "   filename:置き換え対象",
+            "   ext:拡張子(.tifなど.付きで指定する)",
+            "   '''",
+            "   return os.path.splitext(filename)[0]+ext"
+            ],
+            "description": "replace_ext"
+        },    
 }
