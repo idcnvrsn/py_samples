@@ -1,0 +1,1 @@
+copy python.json %HOMEPATH%\AppData\Roaming\Code\User\snippets\python.json
